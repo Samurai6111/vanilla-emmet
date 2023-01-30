@@ -1,0 +1,27 @@
+.d {
+  display: block;
+}
+
+.d\:n {
+  display: none;
+}
+
+.d\:i {
+  display: inline;
+}
+
+.d\:ib {
+  display: inline-block;
+}
+
+.d\:f {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#app {
+  padding: 8rem;
+  background-color: red;
+}
