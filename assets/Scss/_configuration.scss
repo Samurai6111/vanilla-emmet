@@ -1,0 +1,18 @@
+$dupulication_array: ( //  class: property,
+t: top, b: bottom, l: left, r: right, z:z-index, zm:zoom, cp:clip, rsz:resize);
+@each $class,
+$property in $dupulication_array {
+	@for $i from 0 through 100 {
+		.#{$class}\:#{$i}px {
+			#{$property}: #{$i}px;
+		}
+
+		.#{$class}\:#{$i} {
+			#{$property}: #{$i};
+		}
+
+		.#{$class}\:#{$i}\% {
+			#{$property}: #{$i}#{'%'};
+		}
+	}
+}

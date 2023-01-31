@@ -18,40 +18,20 @@
     position: fixed;
 }
 
-.t {
-    top: ;
-}
-
 .t\:a {
     top: auto;
-}
-
-.r {
-    right: ;
 }
 
 .r\:a {
     right: auto;
 }
 
-.b {
-    bottom: ;
-}
-
 .b\:a {
     bottom: auto;
 }
 
-.l {
-    left: ;
-}
-
 .l\:a {
     left: auto;
-}
-
-.z {
-    z-index: ;
 }
 
 .z\:a {
@@ -294,25 +274,12 @@
     overflow-style: marquee;
 }
 
-zoo,
-.zm {
-    zoom: 1;
-}
-
-.cp {
-    clip: ;
-}
-
 .cp:a {
     clip: auto;
 }
 
 .cp:r {
     clip: rect(top right bottom left);
-}
-
-.rsz {
-    resize: ;
 }
 
 .rsz:n {
@@ -331,19 +298,42 @@ zoo,
     resize: vertical;
 }
 
-cur cursor:$ {
-    pointer
+.cur:p {
+    cursor: pointer;
 }
 
-;
-cur:a cursor:auto;
-cur:d cursor:default;
-cur:c cursor:crosshair;
-cur:ha cursor:hand;
-cur:he cursor:help;
-cur:m cursor:move;
-cur:p cursor:pointer;
-cur:t cursor:text;
+.cur:a {
+    cursor: auto;
+}
+
+.cur:d {
+    cursor: default;
+}
+
+.cur:c {
+    cursor: crosshair;
+}
+
+.cur:ha {
+    cursor: hand;
+}
+
+.cur:he {
+    cursor: help;
+}
+
+.cur:m {
+    cursor: move;
+}
+
+.cur:p {
+    cursor: pointer;
+}
+
+.cur:t {
+    cursor: text;
+}
+
 .d {
     display: block;
 }
@@ -363,3 +353,19 @@ cur:t cursor:text;
 .d\:f {
     display: flex;
 }
+
+margin:;
+m:a margin:auto;
+mt margin-top:;
+mt:a margin-top:auto;
+mr margin-right:;
+mr:a margin-right:auto;
+mb margin-bottom:;
+mb:a margin-bottom:auto;
+ml margin-left:;
+ml:a margin-left:auto;
+p padding:;
+pt padding-top:;
+pr padding-right:;
+pb padding-bottom:;
+pl padding-left:;
