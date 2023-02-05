@@ -32,15 +32,13 @@ $property in $dupulication_array2 {
 			.#{$class}\:#{$a}px\|#{$b}px {
 				#{$property}: #{$a}px #{$b}px;
 			}
-			@for $c from 0 through 100 {
-				.#{$class}\:#{$a}px\|#{$b}px\|#{$c}px {
-					#{$property}: #{$a}px #{$b}px #{$c}px;
-				}
-				@for $d from 0 through 100 {
-					.#{$class}\:#{$a}px\|#{$b}px\|#{$c}px\|#{$d}px {
-						#{$property}: #{$a}px #{$b}px #{$c}px #{$d}px;
-					}
-				}
+
+			.#{$class}\:#{$a}px\|a {
+				#{$property}: #{$a}px auto;
+			}
+
+			.#{$class}\:a\|#{b} {
+				#{$property}: auto #{$b}px;
 			}
 		}
 	}
