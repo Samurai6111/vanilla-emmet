@@ -374,13 +374,25 @@
 	margin-left: auto;
 }
 
+.bxz {
+	box-sizing: border-box;
+}
+
+.bxz\:cb {
+	box-sizing: content-box;
+}
+
+.bxz\:bb {
+	box-sizing: border-box;
+}
+
+.bxsh {
+	box-shadow: inset hoff voff blur color;
+}
+
 //____________________________
 //
 //____________________________
-// bxz box-sizing:border-box;
-// bxz:cb box-sizing:content-box;
-// bxz:bb box-sizing:border-box;
-// bxsh box-shadow:inset hoff voff blur color;
 // bxsh:r box-shadow:inset hoff voff blur spread rgb(0, 0, 0);
 // bxsh:ra box-shadow:inset h v blur spread rgba(0, 0, 0, .5);
 // bxsh:n box-shadow:none;
