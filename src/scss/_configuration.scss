@@ -2,7 +2,7 @@
 // .propery : number みたいなパターンを量産
 //____________________________
 $dupulication_array: ( //  class: property,
-t: top, b: bottom, l: left, r: right, z: z-index, zm: zoom, cp: clip, rsz: resize, m: margin, mt: margin-top, mr: margin-right, mb: margin-bottom, ml: margin-left, p: padding, pt: padding-top, pr: padding-right, pb: padding-bottom, pl: padding-left);
+t: top, b: bottom, l: left, r: right, z: z-index, zm: zoom, cp: clip, rsz: resize, m: margin, mt: margin-top, mr: margin-right, mb: margin-bottom, ml: margin-left, p: padding, pt: padding-top, pr: padding-right, pb: padding-bottom, pl: padding-left, w: width, h: height, maw: max-width, mah: max-height, miw: min-width, mih: min-height);
 @each $class,
 $property in $dupulication_array {
 	@for $i from 0 through 100 {
