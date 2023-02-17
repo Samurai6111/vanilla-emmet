@@ -8,3 +8,19 @@
 	padding: 8rem;
 	background-color: red;
 }
+
+.flex {
+	.flexChild {
+		&.-w10 {
+			width: 10%;
+		}
+
+		&.-w20 {
+			width: 20%;
+		}
+
+		&.-w30 {
+			width: 30%;
+		}
+	}
+}
