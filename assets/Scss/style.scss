@@ -1,10 +1,7 @@
 @import 'configuration';
 
-@import 'vanilla-emmet';
+// @import 'simple-properties';
 
-@import 'module';
+@import 'number-properties';
 
-#app {
-	padding: 8rem;
-	background-color: red;
-}
+// @import 'module';

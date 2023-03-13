@@ -1,0 +1,289 @@
+// ///____________________________
+// // 関数
+// //____________________________
+// --------------------------------
+// 文字をリプレイスする関数
+//
+// @param $substr 置換前
+// @param $newsubstr 置換後
+// @param $str 対象文字列
+// @param $all 複数を置換するか
+@function str_replace($substr, $newsubstr, $str, $all: false) {
+	$str: #{$str};
+	$substr: #{$substr};
+	$pos: str-index($str, $substr);
+
+	@while $pos != null {
+		$strlen: str-length($substr);
+		$start: str-slice($str, 0, $pos - 1);
+		$end: str-slice($str, $pos + $strlen);
+		$str: $start + $newsubstr + $end;
+
+		@if $all == true {
+			$pos: str-index($str, $substr);
+		} @else {
+			$pos: null;
+		}
+	}
+
+	@return $str;
+}
+
+//____________________________
+// .propery : number みたいなパターンを量産 px
+//____________________________
+//____________________________
+// remのプロパティ
+//____________________________
+$rem_property_array: (
+	t: top,
+	b: bottom,
+	l: left,
+	r: right,
+	m: margin,
+	mt: margin-top,
+	mr: margin-right,
+	mb: margin-bottom,
+	ml: margin-left,
+	p: padding,
+	pt: padding-top,
+	pr: padding-right,
+	pb: padding-bottom,
+	pl: padding-left,
+	w: width,
+	h: height,
+	maw: max-width,
+	mah: max-height,
+	miw: min-width,
+	mih: min-height,
+	fz:font-size,
+	ti:text-indent,
+);
+@each $class,
+$property in $rem_property_array {
+	@for $i from -20 through 20 {
+		@for $ii from 1 through 9 {
+			$iii: $ii * 0.1 + $i;
+			$iii: str_replace('\.', '\\.', $iii);
+
+			.#{$class}\:#{$iii}rem {
+				#{$property}: #{$iii}rem;
+
+				&--pc {
+					@media #{$pc} {
+						#{$property}: #{$iii}rem;
+					}
+				}
+
+				&--sp {
+					@media #{$tab} {
+						#{$property}: #{$iii}rem;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+//____________________________
+// パーセントのプロパティ
+//____________________________
+$percent_property_array: (
+	t: top,
+	b: bottom,
+	l: left,
+	r: right,
+	m: margin,
+	mt: margin-top,
+	mr: margin-right,
+	mb: margin-bottom,
+	ml: margin-left,
+	p: padding,
+	pt: padding-top,
+	pr: padding-right,
+	pb: padding-bottom,
+	pl: padding-left,
+	w: width,
+	h: height,
+	maw: max-width,
+	mah: max-height,
+	miw: min-width,
+	mih: min-height,
+	fz:font-size,
+	ti:text-indent,
+	trftx: transform: translateX(x),
+	trfty: transform: translateY(y),
+	trftz: transform: translateZ(z),
+);
+
+@each $class,
+$property in $percent_property_array {
+	@for $i from -100 through 100 {
+		.#{$class}\:#{$i}\% {
+			#{$property}: #{$i}#{'%'};
+
+			&--pc {
+				@media #{$pc} {
+					#{$property}: #{$i}#{'%'};
+				}
+			}
+
+			&--sp {
+				@media #{$tab} {
+					#{$property}: #{$i}#{'%'};
+				}
+			}
+		}
+	}
+}
+
+//____________________________
+// 単位がないのプロパティ
+//____________________________
+$unitless_property_array: (
+	lh: line-height,
+	op: opacity,
+	z: z-index,
+);
+@each $class,
+$property in $unitless_property_array {
+	@for $i from -100 through 100 {
+		.#{$class}\:#{$i} {
+			#{$property}: #{$i};
+
+			&--pc {
+				@media #{$pc} {
+					#{$property}: #{$i};
+				}
+			}
+
+			&--sp {
+				@media #{$tab} {
+					#{$property}: #{$i};
+				}
+			}
+		}
+	}
+}
+//____________________________
+// 角度のプロパティ
+//____________________________
+$angle_property_array: (
+	trfrx: rotateX,
+	trfry: rotateY,
+	trfrz: rotateZ,
+);
+
+@each $class,
+$properties in $angle_property_array {
+	@for $i from -100 through 100 {
+		.#{$class}\:#{$i}deg {
+			transform: #{$properties}(#{$i}deg);
+
+			&--pc {
+				@media #{$pc} {
+					transform: $properties(#{$i}deg);
+				}
+			}
+
+			&--sp {
+				@media #{$tab} {
+					transform: $properties(#{$i}deg);
+				}
+			}
+		}
+	}
+}
+//____________________________
+// transform:translateのプロパティ
+//____________________________
+$trtr_property_array: (
+	trftx : translateX,
+	trfty : translateY,
+	trftz : translateZ,
+);
+
+@each $class,
+$properties in $trtr_property_array {
+	@for $i from -360 through 360 {
+		.#{$class}\:#{$i}\% {
+			transform: #{$properties}(#{$i}\%);
+
+			&--pc {
+				@media #{$pc} {
+					transform: $properties(#{$i}\%);
+				}
+			}
+
+			&--sp {
+				@media #{$tab} {
+					transform: $properties(#{$i}\%);
+				}
+			}
+		}
+	}
+
+	@for $i from -20 through 20 {
+		@for $ii from 1 through 9 {
+			$iii: $ii * 0.1 + $i;
+			$iii: str_replace('\.', '\\.', $iii);
+
+			.#{$class}\:#{$iii}rem {
+				transform: #{$properties}(#{$iii}rem);
+
+				&--pc {
+					@media #{$pc} {
+						transform: $properties(#{$iii}rem);
+					}
+				}
+
+				&--sp {
+					@media #{$tab} {
+						transform: $properties(#{$iii}rem);
+					}
+				}
+			}
+		}
+	}
+}
+
+// // lts letter-spacing:;
+// //____________________________
+// // .propery : number みたいなパターンを量産 rem
+// //____________________________
+// // // ____________________________
+// // // .property : number number number numberのパターンを量産
+// // // margin, paddingなど
+// // // ____________________________
+// // $dupulication_array2: (m: margin, p: padding);
+// // @each $class,
+// // $property in $dupulication_array2 {
+// // 	@for $a from 0 through 100 {
+// // 		@for $b from 0 through 100 {
+// // 			.#{$class}\:#{$a}px\|#{$b}px {
+// // 				#{$property}: #{$a}px #{$b}px;
+// // 			}
+// // 			.#{$class}\:#{$a}px\|a {
+// // 				#{$property}: #{$a}px auto;
+// // 			}
+// // 			.#{$class}\:a\|#{b} {
+// // 				#{$property}: auto #{$b}px;
+// // 			}
+// // 		}
+// // 	}
+// // }
+
+// // trf:sc transform: scale(x, y);
+// // trf:sc3 transform: scale3d(x, y, z);
+// // trf:scx transform: scaleX(x);
+// // trf:scy transform: scaleY(y);
+// // trf:scz transform: scaleZ(z);
+// // trf:skx transform: skewX(angle);
+// // trf:sky transform: skewY(angle);
+// // trf:t transform: translate(x, y);
+// // trf:t3 transform: translate3d(tx, ty, tz);
+// // trf:tx transform: translateX(x);
+// // trf:ty transform: translateY(y);
+// // trf:tz transform: translateZ(z);
+// // trfo transform-origin:;
