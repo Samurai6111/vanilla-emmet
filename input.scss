@@ -1,0 +1,11 @@
+@value w: 0.1rem 0.2rem 0.3rem 0.4rem 0.5rem 0.6rem 0.7rem 0.8rem 0.9rem 1rem ... 200rem;
+
+@value h: 0.1rem 0.2rem 0.3rem 0.4rem 0.5rem 0.6rem 0.7rem 0.8rem 0.9rem 1rem ... 200rem;
+
+.${w} {
+  width: var(--${w});
+}
+
+.${h} {
+  height: var(--${h});
+}
