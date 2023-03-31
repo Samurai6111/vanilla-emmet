@@ -1,14 +1,26 @@
-let gulp = require("gulp");
-let sass = require("gulp-sass")(require("sass"));
-let scss_dir = './assets/Scss/*.scss'
-let css_dir = './assets/Css'
+const gulp = require('gulp');
+const postcss = require('gulp-postcss');
+const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
+const concat = require('gulp-concat');
+const purgecss = require('gulp-purgecss');
 
-gulp.task("sass", function(){
-    gulp.src(scss_dir)
-    .pipe(sass({outputStyle: "compressed"}))
-    .pipe(gulp.dest(css_dir))
+gulp.task('css', function() {
+    return gulp.src('style.css')
+        .pipe(postcss([
+            autoprefixer(),
+            cssnano()
+        ]))
+        .pipe(gulp.dest('dist/'));
 });
 
-gulp.task("watch", function(){
-    gulp.watch(scss_dir, gulp.series(["sass"]))
+gulp.task('purgecss', function() {
+    return gulp.src('index.html')
+        .pipe(purgecss({
+            content: ['index.html'],
+            whitelistPatterns: [/^\.w-/, /^\.h-/, /^\.p-/, /^\.m-/]
+        }))
+        .pipe(gulp.dest('dist/'));
 });
+
+gulp.task('build', gulp.series('purgecss', 'css'));
